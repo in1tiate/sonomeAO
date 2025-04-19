@@ -68,14 +68,17 @@ async def process(message):
             del playerlist[id]
     elif message_contents[0] == "PU":
         id = int(message_contents[1])
+        data = str(message_contents[3])
+        if data == "":
+            data = "NO DATA"
         if message_contents[2] == "0": # ooc name
-            playerlist[id].ooc_name = message_contents[3]
+            playerlist[id].ooc_name = data
         elif message_contents[2] == "1": # character
-            playerlist[id].character = message_contents[3]
+            playerlist[id].character = data
         elif message_contents[2] == "2": # showname
-            playerlist[id].showname = message_contents[3]
+            playerlist[id].showname = data
         elif message_contents[2] == "3": # area id
-            playerlist[id].area_id = int(message_contents[3])
+            playerlist[id].area_id = int(data)
 
 async def display():
     os.system('cls' if os.name == 'nt' else 'clear')
